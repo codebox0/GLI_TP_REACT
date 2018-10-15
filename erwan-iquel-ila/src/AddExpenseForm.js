@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import './AddExpenseForm.css';
 
 export class AddExpenseForm extends Component {
-    onSubmit(e) {
-        alert('New line added ! :)');
-        e.preventDefault();
-    }
-
     render() {
         return (
-            <footer className="d-flex footer align-items-center">
+            <div className="d-flex sticky-form align-items-center">
                 <div className="container">
-                    <form className="form-row align-items-center justify-content-center" onSubmit={(e) => { this.onSubmit(e) }}>
+                    <form className="form-row align-items-center justify-content-center" onSubmit={(e) => { this.props.onSubmit(e) }}>
                         <div className="col-3">
                             <input className="form-control" type="text" name="what" id="what" placeholder="What ?" required />
                         </div>
@@ -26,7 +21,7 @@ export class AddExpenseForm extends Component {
                         </div>
                     </form>
                 </div>
-            </footer>
+            </div>
         );
     }
 }

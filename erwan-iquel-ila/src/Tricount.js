@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Body from './Body';
 import { Header } from './Header';
 import { AddExpenseForm } from './AddExpenseForm';
+import Footer from './Footer';
 import { costs } from './costs-mock';
 import { users } from './users-mock';
 import './Tricount.css';
@@ -39,14 +40,15 @@ export class Tricount extends Component {
         }
     }
 
+    handleSubmit(e) {
+        alert('New line added ! :)');
+        e.preventDefault();
+    }
+
     render() {
         const total = this.state.selectedCosts.reduce((acc, value) => {
-            console.log('acc');
-            console.log(acc);
-            console.log('val');
-            console.log(value);
-            return (acc.amount || acc) + value.amount;
-        });
+            return acc + value.amount;
+        }, 0);
 
         return (
             <div>
@@ -55,7 +57,8 @@ export class Tricount extends Component {
                     onInput={(e) => this.handleInput(e)}
                 />
                 <Body costs={this.state.selectedCosts} />
-                <AddExpenseForm />
+                <AddExpenseForm onSubmit={(e) => this.handleSubmit(e)} />
+                <Footer total={total} />
             </div>
         );
     }
