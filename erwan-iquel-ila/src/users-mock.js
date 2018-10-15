@@ -1,4 +1,4 @@
-export default const users = [
+export const users = [
     'Amine',
     'Julie',
     'Kevin'

@@ -19,7 +19,7 @@ export class Footer extends Component {
                             <input className="form-control" type="text" name="who" id="who" placeholder="Who ?" required />
                         </div>
                         <div className="col-3">
-                            <input className="form-control" type="text" name="cost" id="cost" placeholder="$$$" required />
+                            <input className="form-control" type="text" name="cost" id="cost" placeholder="€€€" required />
                         </div>
                         <div className="col-1">
                             <button className="btn btn-primary" type="submit">+</button>

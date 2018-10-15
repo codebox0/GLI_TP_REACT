@@ -1,4 +1,4 @@
-export default const costs = [
+export const costs = [
     {
         paidBy: 'Amine',
         title: 'Beer',
