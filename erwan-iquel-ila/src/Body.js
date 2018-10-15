@@ -1,19 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CostRow from './CostRow';
-import { costs } from './costs-mock';
 import './Body.css';
 
-export class Body extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            costs: costs
-        }
-    }
-
-    render() {
-        const costs = this.state.costs;
+export default function Body(props) {
+        const costs = props.costs;
         const lines = costs.map((cost) => {
             return (
                 <CostRow class="col-12" cost={cost} />
@@ -27,5 +17,4 @@ export class Body extends Component {
                 </div>
             </body>
         )
-    }
 }
