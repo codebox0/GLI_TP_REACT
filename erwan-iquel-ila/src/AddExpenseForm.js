@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Footer.css';
+import './AddExpenseForm.css';
 
-export class Footer extends Component {
+export class AddExpenseForm extends Component {
     onSubmit(e) {
         alert('New line added ! :)');
         e.preventDefault();

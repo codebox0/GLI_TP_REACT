@@ -11,9 +11,9 @@ export class Header extends Component {
 
     render() {
         const users = this.props.users;
-        const options = users.map((user) => {
+        const options = users.map((user, index) => {
             return (
-                <option value={user}>{user}</option>
+                <option value={user} key={index}>{user}</option>
             )
         });
 

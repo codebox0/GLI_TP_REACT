@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Body from './Body';
 import { Header } from './Header';
-import { Footer } from './Footer';
+import { AddExpenseForm } from './AddExpenseForm';
 import { costs } from './costs-mock';
 import { users } from './users-mock';
 import './Tricount.css';
@@ -18,8 +18,6 @@ export class Tricount extends Component {
 
     filterCostsByUser(user) {
         var selectedCosts = this.state.costs.slice();
-
-        console.log(user);
 
         if(user !== 'all') {
             selectedCosts = selectedCosts.filter((value) => {
@@ -42,7 +40,13 @@ export class Tricount extends Component {
     }
 
     render() {
-        console.log(this.state.selectedCosts);
+        const total = this.state.selectedCosts.reduce((acc, value) => {
+            console.log('acc');
+            console.log(acc);
+            console.log('val');
+            console.log(value);
+            return (acc.amount || acc) + value.amount;
+        });
 
         return (
             <div>
@@ -51,7 +55,7 @@ export class Tricount extends Component {
                     onInput={(e) => this.handleInput(e)}
                 />
                 <Body costs={this.state.selectedCosts} />
-                <Footer />
+                <AddExpenseForm />
             </div>
         );
     }
