@@ -41,8 +41,43 @@ export class Tricount extends Component {
     }
 
     handleSubmit(e) {
-        alert('New line added ! :)');
+        if(this.state.what && this.state.who && this.state.cost) {
+            var amount = parseInt(this.state.cost, 10);
+
+            if(!isNaN(amount)) {
+                var cost = {};
+
+                cost.paidBy = this.state.what.slice();
+                cost.title = this.state.who.slice();
+                cost.amount = amount;
+
+                var partialState = {
+                    users: this.state.users.concat([cost.paidBy]),
+                    costs: this.state.costs.concat([cost])
+                }
+
+                if(this.state.selectedCosts[0].paidBy === cost.paidBy) {
+                    console.log('coucou');
+                    partialState.selectedCosts = this.state.selectedCosts.concat([cost]);
+                }
+
+                this.setState(partialState);
+
+                alert('New line added! :)');
+            }
+        }
+
         e.preventDefault();
+    }
+
+    handleInputChange(e) {
+        const target = e.target;
+        const value = target.type === 'checkbox' ?  target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
     }
 
     render() {
@@ -50,14 +85,16 @@ export class Tricount extends Component {
             return acc + value.amount;
         }, 0);
 
+        console.log(this.state);
+
         return (
             <div>
                 <Header
                     users={this.state.users}
                     onInput={(e) => this.handleInput(e)}
-                />
+                    />
                 <Body costs={this.state.selectedCosts} />
-                <AddExpenseForm onSubmit={(e) => this.handleSubmit(e)} />
+                <AddExpenseForm onSubmit={(e) => this.handleSubmit(e)} onChange={(e) => this.handleInputChange(e)} />
                 <Footer total={total} />
             </div>
         );

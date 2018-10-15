@@ -6,15 +6,15 @@ export class AddExpenseForm extends Component {
         return (
             <div className="d-flex sticky-form align-items-center">
                 <div className="container">
-                    <form className="form-row align-items-center justify-content-center" onSubmit={(e) => { this.props.onSubmit(e) }}>
+                    <form className="form-row align-items-center justify-content-center" onSubmit={(e) => this.props.onSubmit(e) }>
                         <div className="col-3">
-                            <input className="form-control" type="text" name="what" id="what" placeholder="What ?" required />
+                            <input className="form-control" type="text" name="what" id="what" placeholder="What ?" onChange={(e) => this.props.onChange(e)} required />
                         </div>
                         <div className="col-3">
-                            <input className="form-control" type="text" name="who" id="who" placeholder="Who ?" required />
+                            <input className="form-control" type="text" name="who" id="who" placeholder="Who ?" onChange={(e) => this.props.onChange(e)} required />
                         </div>
                         <div className="col-3">
-                            <input className="form-control" type="text" name="cost" id="cost" placeholder="€€€" required />
+                            <input className="form-control" type="number" name="cost" id="cost" placeholder="€€€" onChange={(e) => this.props.onChange(e)} required />
                         </div>
                         <div className="col-1">
                             <button className="btn btn-primary" type="submit">+</button>
