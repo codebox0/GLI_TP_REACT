@@ -92,7 +92,7 @@ export class Tricount extends Component {
                 <Header
                     users={this.state.users}
                     onInput={(e) => this.handleInput(e)}
-                    />
+                />
                 <Body costs={this.state.selectedCosts} />
                 <AddExpenseForm onSubmit={(e) => this.handleSubmit(e)} onChange={(e) => this.handleInputChange(e)} />
                 <Footer total={total} />
