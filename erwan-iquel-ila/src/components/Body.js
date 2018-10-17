@@ -1,6 +1,6 @@
 import React from 'react';
 import CostRow from './CostRow';
-import './Body.css';
+import '../css/Body.css';
 
 export default function Body(props) {
         const costs = props.costs;

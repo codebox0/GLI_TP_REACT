@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Body from './Body';
 import { Header } from './Header';
-import { AddExpenseForm } from './AddExpenseForm';
+import { AddExpenseForm } from '../containers/AddExpenseForm';
 import Footer from './Footer';
 import { costs } from './costs-mock';
 import { users } from './users-mock';
-import './Tricount.css';
+import '../css/Tricount.css';
 
 export class Tricount extends Component {
     constructor(props) {
@@ -45,25 +45,24 @@ export class Tricount extends Component {
             var amount = parseInt(this.state.cost, 10);
 
             if(!isNaN(amount)) {
-                var cost = {};
+                if(amount >= 0) {
+                    var cost = {};
 
-                cost.paidBy = this.state.what.slice();
-                cost.title = this.state.who.slice();
-                cost.amount = amount;
+                    cost.paidBy = this.state.what.slice();
+                    cost.title = this.state.who.slice();
+                    cost.amount = amount;
 
-                var partialState = {
-                    users: this.state.users.concat([cost.paidBy]),
-                    costs: this.state.costs.concat([cost])
+                    var partialState = {
+                        users: this.state.users.concat([cost.paidBy]),
+                        costs: this.state.costs.concat([cost])
+                    }
+
+                    if(this.state.selectedCosts[0].paidBy === cost.paidBy || this.state.selectedCosts.length === this.state.costs.length) {
+                        partialState.selectedCosts = this.state.selectedCosts.concat([cost]);
+                    }
+
+                    this.setState(partialState);
                 }
-
-                if(this.state.selectedCosts[0].paidBy === cost.paidBy) {
-                    console.log('coucou');
-                    partialState.selectedCosts = this.state.selectedCosts.concat([cost]);
-                }
-
-                this.setState(partialState);
-
-                alert('New line added! :)');
             }
         }
 

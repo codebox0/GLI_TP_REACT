@@ -1,5 +1,5 @@
 import React from 'react';
-import './CostRow.css';
+import '../css/CostRow.css';
 
 export default function CostRow(props) {
     return (

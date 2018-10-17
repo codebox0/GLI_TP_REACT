@@ -1,18 +1,25 @@
-let id = 0;
+let costId = 0;
+let userId = 0;
 
-export function filterCosts(userName = 'all') {
+export function setVisibilityFilter(filter = 'all') {
     return {
-        type: 'FILTER_COSTS',
-        userName
+        type: 'SET_VISIBILITY_FILTER',
+        filter
     };
 }
-
-export const loadCosts = filterCosts();
 
 export function addCost(cost) {
     return {
         type: 'ADD_COST',
-        id: id++,
+        id: costId++,
         cost
+    };
+}
+
+export function addUser(name) {
+    return {
+        type: 'ADD_USER',
+        id: userId++;
+        name
     };
 }
