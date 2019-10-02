@@ -16,7 +16,7 @@ import { combineReducers } from 'redux';
     users: [
         {
             id: 1,
-            name: 'Erwan'
+            name: 'mamadou'
         }, ...
     ]
  }
